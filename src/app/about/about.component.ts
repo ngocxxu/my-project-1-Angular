@@ -2,17 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../service/common.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-about',
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.css']
 })
-export class HeaderComponent implements OnInit {
-
-  public name = 'abc';
+export class AboutComponent implements OnInit {
   public age;
-  public vehicles = ['toyota', 'honda'];
 
   constructor(private common: CommonService) { 
+    //this.age là biến mặc định của local
+    // common.age là biến global, là nơi lưu trữ biến
     this.age = common.age;
   }
 
@@ -20,10 +19,6 @@ export class HeaderComponent implements OnInit {
     this.common.age++;
     this.age = this.common.age;
     //this.vehicles.push(this.name + ': ' + this.age);
-  }
-
-  public giamTuoi(){
-    this.age--;
   }
 
   ngOnInit(): void {

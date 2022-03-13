@@ -1,1 +1,6 @@
-<app-header></app-header>
+<a [routerLink]="['/']" routerLinkActive="router-link-active">homepage</a>
+<br/>
+<a [routerLink]="['/header']" routerLinkActive="router-link-active">Header</a>
+<br/>
+<a [routerLink]="['/about']" routerLinkActive="router-link-active">about</a>
+<router-outlet></router-outlet>
