@@ -1,0 +1,29 @@
+<div>
+  <h1>Hero Form</h1>
+  <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+    <div>
+      <label for="name">name</label>
+      <input type="text" id="name" required [(ngModel)]="name" name="name" />
+      <p *ngIf="name === ''">*Vui long nhap ten</p>
+    </div>
+    <div>
+      <label for="password">password</label>
+      <input
+        type="text"
+        id="password"
+        required
+        [(ngModel)]="password"
+        name="password"
+      />
+    </div>
+    <div>
+      <label for="vehicle">vehicle</label>
+      <select (change)="selectVehicle($event)">
+        <option *ngFor="let vehicle of vehicles">
+          {{ vehicle }}
+        </option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="!myForm.form.valid">Submit</button>
+  </form>
+</div>

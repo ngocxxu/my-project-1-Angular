@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BoldDirective } from './directives/bold.directive';
+import { FormComponent } from './form/form.component';
+import { ReactiveComponent } from './reactive/reactive.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { BoldDirective } from './directives/bold.directive';
     HeaderComponent,
     AboutComponent,
     PageNotFoundComponent,
-    BoldDirective
+    BoldDirective,
+    FormComponent,
+    ReactiveComponent
   ],
   imports: [
     BrowserModule,
