@@ -1,5 +1,21 @@
 <p>about works!</p>
-<div *ngIf="age">Ban bao nhieu tuoi {{age}}</div>
-<div>MSSV cua ban la {{id | json}}</div>
+<div *ngIf="age">Ban bao nhieu tuoi {{ age }}</div>
+<div>MSSV cua ban la {{ id | json }}</div>
 <button (click)="tangTuoi()">tăng tuổi</button>
-<div *ngIf="age >= 18" class="overAge">Bạn trên 18t {{age}}</div>
+<button (click)="addMorePost()">Them Post</button>
+<div *ngIf="age >= 18" class="overAge">Bạn trên 18t {{ age }}</div>
+<div>{{ posts | json }}</div>
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <label> Name: </label>
+  <input id="name" type="text" formControlName="name" required />
+  <!-- <div *ngIf="name.errors?.['required']">Name is required.</div> -->
+  <label>
+    Age:
+    <input type="text" formControlName="age" />
+  </label>
+  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+  <!-- <button (ngSubmit)="onSubmit()">Submit</button> -->
+  <div *ngFor="let post of posts">
+    <p>{{ post }}</p>
+  </div>
+</form>

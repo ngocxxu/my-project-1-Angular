@@ -1,31 +1,45 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-
 export class ServerHTTPService {
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       //Authorization: 'my-auth-token',
     }),
-  };  
+  };
 
   private REST_API_SERVER = 'http://localhost:3000';
 
   constructor(private httpClient: HttpClient) {}
 
-  public getProfile(): Observable<any> {
+  public getProfile() {
     const url = `${this.REST_API_SERVER}/profile`;
-    return this.httpClient.get<any>(url, this.httpOptions).pipe(catchError(this.handleError))
+    return this.httpClient
+      .get<any>(url, this.httpOptions)
+      .pipe(catchError(this.handleError));
   }
 
-  public getPost(): Observable<any> {
+  public getPosts() {
     const url = `${this.REST_API_SERVER}/post`;
-    return this.httpClient.get<any>(url, this.httpOptions).pipe(catchError(this.handleError))
+    return this.httpClient
+      .get<any>(url, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  public addPosts(data: any) {
+    const url = `${this.REST_API_SERVER}/post`;
+    return this.httpClient
+      .post<any>(url, data, this.httpOptions)
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
