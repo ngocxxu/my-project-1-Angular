@@ -16,6 +16,17 @@
   <button type="submit" [disabled]="!profileForm.valid">Submit</button>
   <!-- <button (ngSubmit)="onSubmit()">Submit</button> -->
   <div *ngFor="let post of posts">
-    <p>{{ post }}</p>
+    <!-- <p>{{ post }}</p> -->
   </div>
 </form>
+
+<table id="customers">
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+  </tr>
+  <tr *ngFor="let post of posts">
+    <!-- <td>{{ post?.title }}</td> -->
+    <td>Maria Anders</td>
+  </tr>
+</table>

@@ -35,7 +35,7 @@ export class ServerHTTPService {
       .pipe(catchError(this.handleError));
   }
 
-  public addPosts(data: any) {
+  public addPosts(data: object) {
     const url = `${this.REST_API_SERVER}/post`;
     return this.httpClient
       .post<any>(url, data, this.httpOptions)

@@ -11,7 +11,7 @@ import { ServerHTTPService } from '../service/server-http.service';
 export class AboutComponent implements OnInit {
   public age;
   public id = '';
-  public posts = '';
+  public posts = [];
   //public title = '';
 
   public profileForm = new FormGroup({
