@@ -1,3 +1,5 @@
 <p>about works!</p>
+<div *ngIf="age">Ban bao nhieu tuoi {{age}}</div>
+<div>MSSV cua ban la {{id | json}}</div>
 <button (click)="tangTuoi()">tăng tuổi</button>
 <div *ngIf="age >= 18" class="overAge">Bạn trên 18t {{age}}</div>

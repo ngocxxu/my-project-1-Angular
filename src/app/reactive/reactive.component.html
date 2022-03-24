@@ -1,1 +1,22 @@
-<p>reactive works!</p>
+<div>
+  <!-- <label>
+    Name:
+    <input type="text" [formControl]="name" />
+  </label>
+  <p>
+    Value:
+    {{ name.value }}
+  </p> -->
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <label> Name: </label>
+    <input id="name" type="text" formControlName="name" required />
+    <!-- <div *ngIf="name.errors?.['required']">Name is required.</div> -->
+    <label>
+      Age:
+      <input type="text" formControlName="age" />
+    </label>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+    <!-- <button (ngSubmit)="onSubmit()">Submit</button> -->
+  </form>
+  <!-- <button (click)="updateName()">Update Name</button> -->
+</div>
