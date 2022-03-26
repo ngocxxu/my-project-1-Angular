@@ -1,18 +1,6 @@
 <div>
   <h1>STUDENT REGISTER FORM</h1>
-  <form class="example-form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-    <!-- <label> Name: </label>
-    <input id="name" type="text" formControlName="name" required />
-    <div *ngIf="name.errors?.['required']">Name is required.</div>
-    <br />
-    <br />
-    <label>
-      Age:
-      <input type="text" formControlName="age" />
-    </label>
-    <br/>
-    <br/> -->
-    <!-- <button (ngSubmit)="onSubmit()">Submit</button> -->
+  <form class="example-form" [formGroup]="studentForm">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Student ID</mat-label>
       <input matInput placeholder="" formControlName="code" require />
@@ -45,8 +33,12 @@
       <mat-label>Picture</mat-label>
       <input matInput placeholder="" formControlName="picture" require />
     </mat-form-field>
-    <br />
-    <button mat-raised-button color="primary" type="submit">Submit</button>
+    <!-- <br />
+    <button [disabled]="!studentForm.valid" mat-raised-button color="primary" type="submit">Submit</button> -->
+    <br/>
+    <button mat-raised-button color="primary" type="submit" (click)="SaveAndGoToList()">Save & Go to list</button>
+    &nbsp;
+    <button mat-raised-button color="primary" type="submit" (click)="SaveAndAddNewStudent()">Save & Add new student</button>
   </form>
   <!-- <button (click)="updateName()">Update Name</button> -->
 </div>

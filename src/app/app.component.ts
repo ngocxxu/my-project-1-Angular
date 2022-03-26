@@ -1,4 +1,3 @@
-
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { CommonService } from './service/common.service';
@@ -23,6 +22,13 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.common.totalStudent$.subscribe((total: number) => {
+      this.totalStudents = total;
+    });
+    this.serverHttp.getStudents().subscribe((data) => {
+      //console.log('dataaaa', data);
+      this.common.setTotalStudents(data.length);
+    });
   }
 
   public openLeftSide() {

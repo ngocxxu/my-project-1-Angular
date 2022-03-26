@@ -34,8 +34,9 @@ export class StudentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.serverHttp.getStudents().subscribe((data) => {
-      console.log('dataaaa', data);
+      //console.log('dataaaa', data);
       this.students = data;
+      this.common.setTotalStudents(data.length);
     });
   }
 

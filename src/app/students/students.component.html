@@ -1,7 +1,10 @@
 <div>
-  <button mat-raised-button color="primary"  (click)="AddStudent()">
-    <mat-icon>person_add</mat-icon> 
-    Add Student</button>
+  <button mat-raised-button color="primary" (click)="AddStudent()">
+    <mat-icon>person_add</mat-icon>
+    Add Student
+  </button>
+  <br/>
+  <br/>
   <table id="customers" style="border-collapse: collapse">
     <tr>
       <th>Id</th>
@@ -11,6 +14,7 @@
       <th>Last Name</th>
       <th>Email</th>
       <th>Phone</th>
+      <th>Action</th>
     </tr>
     <tr *ngFor="let student of students">
       <td>{{ student?.id }}</td>
@@ -20,6 +24,15 @@
       <td>{{ student?.lastName }}</td>
       <td>{{ student?.email }}</td>
       <td>{{ student?.phone }}</td>
+      <td>
+        <button mat-mini-fab color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+        &nbsp;
+        <button mat-mini-fab color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
     </tr>
   </table>
 </div>
