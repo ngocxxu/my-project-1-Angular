@@ -36,20 +36,20 @@ export class AboutComponent implements OnInit {
 
   ngOnInit(): void {
     // get dữ liệu từ server
-    this.serverHttp.getProfile().subscribe((data) => {
-      //console.log('data', data);
-      this.age = data.age;
-    });
+    // this.serverHttp.getProfile().subscribe((data) => {
+    //   //console.log('data', data);
+    //   this.age = data.age;
+    // });
 
-    this.serverHttp.getPosts().subscribe((data) => {
-      //console.log('data', data);
-      this.posts = data;
-      this.id = data[0].id;
-    })
+    // this.serverHttp.getPosts().subscribe((data) => {
+    //   //console.log('data', data);
+    //   this.posts = data;
+    //   this.id = data[0].id;
+    // })
 
   }
     public addMorePost(){
-      console.log('dataName', this.profileForm.get('name'));
+      //console.log('dataName', this.profileForm.get('name'));
       //const newData = {title: 'testing'};
       const newData = {title: `${this.profileForm.get('profileForm.name')}`};
       this.serverHttp.addPosts(newData).subscribe((data) => {
@@ -58,7 +58,7 @@ export class AboutComponent implements OnInit {
     }
     
     public onSubmit() {
-      console.log('dataName', this.profileForm.value.name);
+      //console.log('dataName', this.profileForm.value.name);
       const newData = {title: `${this.profileForm.value.name}`};
       this.serverHttp.addPosts(newData).subscribe((data) => {
         console.log('addPosts', data);

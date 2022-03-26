@@ -7,10 +7,12 @@ import { ServerHTTPService } from './service/server-http.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
   title = 'HelloWorld';
+
+  // @viewchild tìm kiếm thằng nào có id là sidenav để thực thi
   @ViewChild('sidenav') sidenav?: MatSidenav;
   public isOpened = false;
   public totalStudents = 0;

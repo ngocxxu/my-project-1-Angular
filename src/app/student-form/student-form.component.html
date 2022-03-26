@@ -1,0 +1,52 @@
+<div>
+  <h1>STUDENT REGISTER FORM</h1>
+  <form class="example-form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <!-- <label> Name: </label>
+    <input id="name" type="text" formControlName="name" required />
+    <div *ngIf="name.errors?.['required']">Name is required.</div>
+    <br />
+    <br />
+    <label>
+      Age:
+      <input type="text" formControlName="age" />
+    </label>
+    <br/>
+    <br/> -->
+    <!-- <button (ngSubmit)="onSubmit()">Submit</button> -->
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Student ID</mat-label>
+      <input matInput placeholder="" formControlName="code" require />
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Gender</mat-label>
+      <input matInput placeholder="" formControlName="gender" require />
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>First name</mat-label>
+      <input matInput placeholder="" formControlName="firstName" require />
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Last name</mat-label>
+      <input matInput placeholder="" formControlName="lastName" require />
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Birth date</mat-label>
+      <input matInput placeholder="" formControlName="dob" require />
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="" formControlName="email" require />
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Phone number</mat-label>
+      <input matInput placeholder="" formControlName="phone" require />
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Picture</mat-label>
+      <input matInput placeholder="" formControlName="picture" require />
+    </mat-form-field>
+    <br />
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>
+  <!-- <button (click)="updateName()">Update Name</button> -->
+</div>

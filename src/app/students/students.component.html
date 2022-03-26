@@ -1,0 +1,25 @@
+<div>
+  <button mat-raised-button color="primary"  (click)="AddStudent()">
+    <mat-icon>person_add</mat-icon> 
+    Add Student</button>
+  <table id="customers" style="border-collapse: collapse">
+    <tr>
+      <th>Id</th>
+      <th>Code</th>
+      <th>Gender</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+    </tr>
+    <tr *ngFor="let student of students">
+      <td>{{ student?.id }}</td>
+      <td>{{ student?.code }}</td>
+      <td>{{ student?.gender }}</td>
+      <td>{{ student?.firstName }}</td>
+      <td>{{ student?.lastName }}</td>
+      <td>{{ student?.email }}</td>
+      <td>{{ student?.phone }}</td>
+    </tr>
+  </table>
+</div>

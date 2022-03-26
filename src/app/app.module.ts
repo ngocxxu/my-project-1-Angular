@@ -20,6 +20,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { BoldDirective } from './directives/bold.directive';
 import { FormComponent } from './form/form.component';
 import { ReactiveComponent } from './reactive/reactive.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StudentsComponent } from './students/students.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { StudentFormComponent } from './student-form/student-form.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,9 @@ import { ReactiveComponent } from './reactive/reactive.component';
     BoldDirective,
     FormComponent,
     ReactiveComponent,
+    StudentsComponent,
+    DashboardComponent,
+    StudentFormComponent,
   ],
   imports: [
     HttpClientModule,
@@ -45,6 +52,7 @@ import { ReactiveComponent } from './reactive/reactive.component';
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
