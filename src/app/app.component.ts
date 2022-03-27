@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
     this.common.totalStudent$.subscribe((total: number) => {
       this.totalStudents = total;
     });
-    this.serverHttp.getStudents().subscribe((data) => {
+    this.serverHttp.getAllStudents().subscribe((data) => {
       //console.log('dataaaa', data);
       this.common.setTotalStudents(data.length);
     });

@@ -1,3 +1,6 @@
+# Before Run Project
+Run `json-server --w db.json` for a dev server. Navigate to `http://localhost:3000/`. The app will automatically get data API from server.json.
+
 # MyApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.6.

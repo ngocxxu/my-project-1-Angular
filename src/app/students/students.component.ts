@@ -33,7 +33,11 @@ export class StudentsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.serverHttp.getStudents().subscribe((data) => {
+    this.loadData()
+  }
+  
+  private loadData() {
+    this.serverHttp.getAllStudents().subscribe((data) => {
       //console.log('dataaaa', data);
       this.students = data;
       this.common.setTotalStudents(data.length);
@@ -42,6 +46,20 @@ export class StudentsComponent implements OnInit {
 
   public AddStudent() {
     //điều hướng tới trang mong muốn
-    this.router.navigate(['student-form']);
+    this.router.navigate(['student-form', 0]);
+  }
+
+  public deleteEachStudent(studentId: any){
+    this.serverHttp.deleteStudent(studentId).subscribe((data) => {
+      // load lại data sau khi xóa
+      this.loadData()
+    })
+  }
+
+  public editEachStudent(studentId: any){
+    // cach 1
+    this.router.navigate([`student-form`, studentId])
+    // cach 2
+    //this.router.navigate([`student-form/${studentId}`])
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Student } from '../models/Student';
 import { CommonService } from '../service/common.service';
 import { ServerHTTPService } from '../service/server-http.service';
@@ -12,7 +12,7 @@ import { ServerHTTPService } from '../service/server-http.service';
 })
 export class StudentFormComponent implements OnInit {
   //public name = new FormControl('');
-  public id = 0;
+  public id:any;
   public studentForm = new FormGroup({
     code: new FormControl('', [Validators.required, Validators.minLength(4)]),
     gender: new FormControl(''),
@@ -23,11 +23,14 @@ export class StudentFormComponent implements OnInit {
     phone: new FormControl(''),
     picture: new FormControl(''),
   });
+  public student: any;
 
   constructor(
     private common: CommonService,
     private serverHttps: ServerHTTPService,
-    private router: Router
+    private router: Router,
+    // để nhận tham số đầu vào studentID từ URL
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +38,32 @@ export class StudentFormComponent implements OnInit {
     //   //console.log('dataaaa', data);
     //   this.common.setTotalStudents(data.length);
     // });
+
+    // nhận dc param ID từ URL khi Edit
+    //this.id = +this.route.snapshot.paramMap? this.route.snapshot.paramMap.get('id') : 0;
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id > 0) {
+      this.loadData(this.id);
+    }
+  }
+  private loadData(studentId: number) {
+    this.serverHttps.getStudent(studentId).subscribe((data) => {
+      //console.log('student', data);
+      this.student = data;
+      for (const controlName in this.studentForm.controls) {
+        if (controlName) {
+          this.studentForm.controls[controlName].setValue(data[controlName]);
+        }
+
+        // cach 2
+        // for (const [key, value] of Object.entries(this.student)) {
+        //   //console.log(`${key}: ${value}`);
+        //   if(controlName === key){
+        //     this.studentForm.controls[controlName].setValue(value);
+        //   }
+        // }
+      }
+    });
   }
 
   public updateName() {
@@ -61,7 +90,7 @@ export class StudentFormComponent implements OnInit {
     }
   }
 
-  private createData(){
+  private CreateData() {
     const newStudent: any = {};
     for (const control in this.studentForm.controls) {
       newStudent[control] = this.studentForm.controls[control].value;
@@ -70,17 +99,42 @@ export class StudentFormComponent implements OnInit {
   }
 
   public SaveAndGoToList() {
-    this.serverHttps.addStudents(this.createData()).subscribe((data) => {
-      //console.log('addStudents', data);
-      this.router.navigate(['students']);
-    });
+    if (this.id > 0) {
+      this.serverHttps
+        .modifyStudent(this.id, this.CreateData())
+        .subscribe((data) => {
+          this.router.navigate(['students']);
+        });
+    } else {
+      this.serverHttps.addStudents(this.CreateData()).subscribe((data) => {
+        //console.log('addStudents', data);
+        this.router.navigate(['students']);
+      });
+    }
   }
 
   public SaveAndAddNewStudent() {
-    this.serverHttps.addStudents(this.createData()).subscribe((data) => {
-      //console.log('addStudents', data);
-      this.common.increaseStudent();
-      this.studentForm.reset();
-    });
+    if (this.id > 0) {
+      this.serverHttps
+        .modifyStudent(this.id, this.CreateData())
+        .subscribe((data) => {
+          // this.common.increaseStudent();
+          alert("You save successfully!");
+          this.router.navigate(['students']);
+        });
+    } else {
+      // neu id = 0 là ng mới thì chạy vô hàm bên dưới
+      this.serverHttps.addStudents(this.CreateData()).subscribe((data) => {
+        //console.log('addStudents', data);
+        this.common.increaseStudent();
+        this.studentForm.reset();
+      });
+    }
+  }
+
+  public randomStudent(){
+    this.serverHttps.getRandomStudent().subscribe(data =>{
+      if(data && data.results && data.results.length > 0){}
+    })
   }
 }

@@ -29,8 +29,22 @@ export class ServerHTTPService {
       .pipe(catchError(this.handleError));
   }
 
-  public getStudents() {
+  public getAllStudents() {
     const url = `${this.REST_API_SERVER}/students`;
+    return this.httpClient
+      .get<any>(url, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  public getRandomStudent() {
+    const url = `${this.REST_API_SERVER}/students`;
+    return this.httpClient
+      .get<any>(url, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  public getStudent(id: number) {
+    const url = `${this.REST_API_SERVER}/students/${id}`;
     return this.httpClient
       .get<any>(url, this.httpOptions)
       .pipe(catchError(this.handleError));
@@ -40,6 +54,20 @@ export class ServerHTTPService {
     const url = `${this.REST_API_SERVER}/students`;
     return this.httpClient
       .post<any>(url, data, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  public modifyStudent(studentId: number, data: Student) {
+    const url = `${this.REST_API_SERVER}/students/` + studentId;
+    return this.httpClient
+      .put<any>(url, data, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  public deleteStudent(studentId: number) {
+    const url = `${this.REST_API_SERVER}/students/` + studentId;
+    return this.httpClient
+      .delete<any>(url)
       .pipe(catchError(this.handleError));
   }
 

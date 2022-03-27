@@ -10,6 +10,7 @@
       <th>Id</th>
       <th>Code</th>
       <th>Gender</th>
+      <th>Day of birth</th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email</th>
@@ -20,16 +21,17 @@
       <td>{{ student?.id }}</td>
       <td>{{ student?.code }}</td>
       <td>{{ student?.gender }}</td>
+      <td>{{ student?.dob }}</td>
       <td>{{ student?.firstName }}</td>
       <td>{{ student?.lastName }}</td>
       <td>{{ student?.email }}</td>
       <td>{{ student?.phone }}</td>
       <td>
-        <button mat-mini-fab color="primary">
+        <button (click)="editEachStudent(student.id)" mat-mini-fab color="primary">
           <mat-icon>edit</mat-icon>
         </button>
         &nbsp;
-        <button mat-mini-fab color="warn">
+        <button (click)="deleteEachStudent(student.id)" mat-mini-fab color="warn">
           <mat-icon>delete</mat-icon>
         </button>
       </td>

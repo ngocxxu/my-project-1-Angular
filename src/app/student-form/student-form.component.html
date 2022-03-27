@@ -35,10 +35,34 @@
     </mat-form-field>
     <!-- <br />
     <button [disabled]="!studentForm.valid" mat-raised-button color="primary" type="submit">Submit</button> -->
-    <br/>
-    <button mat-raised-button color="primary" type="submit" (click)="SaveAndGoToList()">Save & Go to list</button>
+    <br />
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      (click)="SaveAndGoToList()"
+    >
+      Save & Go to list
+    </button>
     &nbsp;
-    <button mat-raised-button color="primary" type="submit" (click)="SaveAndAddNewStudent()">Save & Add new student</button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      (click)="SaveAndAddNewStudent()"
+    >
+      Save <span *ngIf="id <= 0">& Add new student</span>
+    </button>
+    &nbsp;
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      (click)="randomStudent()"
+      *ngIf="id <= 0"
+    >
+      Get random a student
+    </button>
   </form>
   <!-- <button (click)="updateName()">Update Name</button> -->
 </div>
