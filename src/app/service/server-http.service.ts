@@ -37,7 +37,7 @@ export class ServerHTTPService {
   }
 
   public getRandomStudent() {
-    const url = `${this.REST_API_SERVER}/students`;
+    const url = `https://randomuser.me/api/?results=1`;
     return this.httpClient
       .get<any>(url, this.httpOptions)
       .pipe(catchError(this.handleError));

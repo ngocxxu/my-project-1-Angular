@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as _ from 'lodash';
 import { Student } from '../models/Student';
 import { CommonService } from '../service/common.service';
 import { ServerHTTPService } from '../service/server-http.service';
@@ -61,5 +62,13 @@ export class StudentsComponent implements OnInit {
     this.router.navigate([`student-form`, studentId])
     // cach 2
     //this.router.navigate([`student-form/${studentId}`])
+  }
+
+  public sortCodeStudent(dir: string){
+    if(dir === 'up'){
+      this.students = _.orderBy(this.students,['code'], ['asc']);
+    }else{
+      this.students = _.orderBy(this.students,['code'], ['desc']);
+    }
   }
 }

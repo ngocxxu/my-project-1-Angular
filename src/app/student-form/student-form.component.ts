@@ -134,7 +134,18 @@ export class StudentFormComponent implements OnInit {
 
   public randomStudent(){
     this.serverHttps.getRandomStudent().subscribe(data =>{
-      if(data && data.results && data.results.length > 0){}
+      if(data && data.results && data.results.length > 0){
+        const student = data.results[0];
+        this.studentForm.controls['code'].setValue((student.id.name || "") + "-" + (student.id.value || ""));
+        this.studentForm.controls['gender'].setValue(student.gender);
+        this.studentForm.controls['firstName'].setValue(student.name.first);
+        this.studentForm.controls['lastName'].setValue(student.name.last);
+        this.studentForm.controls['dob'].setValue(student.dob.date);
+        this.studentForm.controls['email'].setValue(student.email);
+        this.studentForm.controls['phone'].setValue(student.phone);
+        this.studentForm.controls['picture'].setValue(student.picture.large);
+
+      }
     })
   }
 }

@@ -8,7 +8,11 @@
   <table id="customers" style="border-collapse: collapse">
     <tr>
       <th>Id</th>
-      <th>Code</th>
+      <th>Picture</th>
+      <th>Code
+        <mat-icon style="cursor: pointer" (click)="sortCodeStudent('down')">arrow_downward</mat-icon>
+        <mat-icon style="cursor: pointer" (click)="sortCodeStudent('up')">arrow_upward</mat-icon>
+      </th>
       <th>Gender</th>
       <th>Day of birth</th>
       <th>First Name</th>
@@ -19,6 +23,9 @@
     </tr>
     <tr *ngFor="let student of students">
       <td>{{ student?.id }}</td>
+      <td>
+        <img *ngIf="student?.picture" src="{{ student?.picture }}" height="50"/>
+      </td>
       <td>{{ student?.code }}</td>
       <td>{{ student?.gender }}</td>
       <td>{{ student?.dob }}</td>
